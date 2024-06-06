@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JugadoresPantalla">
+    tools:context=".JugadoresPantalla"
+    android:background="#424242">
 
 
     <LinearLayout
@@ -31,7 +32,8 @@
         android:background="#212121"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
 
         <ImageView
@@ -39,9 +41,9 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:clickable="true"
-            tools:srcCompat="@drawable/atras2"
+            tools:srcCompat="@drawable/atras"
             android:focusable="true"
-            android:layout_gravity="left" />
+            android:layout_gravity="left"/>
 
         <TextView
             android:id="@+id/toolbar_title"
