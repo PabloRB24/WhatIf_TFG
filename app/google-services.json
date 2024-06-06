@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "649870656282",
+    "project_id": "tfggrado-de607",
+    "storage_bucket": "tfggrado-de607.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649870656282:android:fdf8b833862cac681d62a3",
+        "android_client_info": {
+          "package_name": "com.example.whatif_tfg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxQpEKX-gZoDUPk5FfJFC8dITKUv1-3G8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

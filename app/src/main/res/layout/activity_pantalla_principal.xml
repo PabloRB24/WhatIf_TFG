@@ -1,0 +1,1077 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#424242">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="93dp"
+        android:padding="5dp"
+        android:background="#212121"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EQUIPOS"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/imageButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="right"
+            app:srcCompat="@drawable/pelota" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="368dp"
+        android:layout_height="603dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 76ers -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_76ers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_76ers">
+
+                    <ImageView
+                        android:id="@+id/team_logo1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="76ers"
+                        app:srcCompat="@drawable/sixers" />
+
+                    <TextView
+                        android:id="@+id/team_name1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="76ers"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Bucks -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_bucks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_bucks">
+
+                    <ImageView
+                        android:id="@+id/team_logo2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Bucks"
+                        app:srcCompat="@drawable/bucks" />
+
+                    <TextView
+                        android:id="@+id/team_name2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Bucks"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Bulls -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_bulls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_bulls">
+
+                    <ImageView
+                        android:id="@+id/team_logo3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Bulls"
+                        app:srcCompat="@drawable/bulls" />
+
+                    <TextView
+                        android:id="@+id/team_name3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Bulls"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Cavaliers -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_cavaliers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_cavaliers">
+
+                    <ImageView
+                        android:id="@+id/team_logo4"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Cavaliers"
+                        app:srcCompat="@drawable/cavaliers" />
+
+                    <TextView
+                        android:id="@+id/team_name4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Cavaliers"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Celtics -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_celtics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_celtics">
+
+                    <ImageView
+                        android:id="@+id/team_logo5"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Celtics"
+                        app:srcCompat="@drawable/celtics" />
+
+                    <TextView
+                        android:id="@+id/team_name5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Celtics"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Clippers -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_clippers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_clippers">
+
+                    <ImageView
+                        android:id="@+id/team_logo6"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Clippers"
+                        app:srcCompat="@drawable/clippers" />
+
+                    <TextView
+                        android:id="@+id/team_name6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Clippers"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Grizzlies -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_grizzlies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_grizzlies">
+
+                    <ImageView
+                        android:id="@+id/team_logo7"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Grizzlies"
+                        app:srcCompat="@drawable/grizzlies" />
+
+                    <TextView
+                        android:id="@+id/team_name7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Grizzlies"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Hawks -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_hawks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp"
+                android:clickable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_hawks">
+
+                    <ImageView
+                        android:id="@+id/team_logo8"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Hawks"
+                        app:srcCompat="@drawable/hawks" />
+
+                    <TextView
+                        android:id="@+id/team_name8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Hawks"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Heat -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_heat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_heat">
+
+                    <ImageView
+                        android:id="@+id/team_logo9"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Heat"
+                        app:srcCompat="@drawable/heat" />
+
+                    <TextView
+                        android:id="@+id/team_name9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Heat"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Hornets -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_hornets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_hornets">
+
+                    <ImageView
+                        android:id="@+id/team_logo10"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Hornets"
+                        app:srcCompat="@drawable/hornets" />
+
+                    <TextView
+                        android:id="@+id/team_name10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Hornets"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Jazz -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_jazz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_jazz">
+
+                    <ImageView
+                        android:id="@+id/team_logo11"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Jazz"
+                        app:srcCompat="@drawable/jazz" />
+
+                    <TextView
+                        android:id="@+id/team_name11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Jazz"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Kings -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_kings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_kings">
+
+                    <ImageView
+                        android:id="@+id/team_logo12"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Kings"
+                        app:srcCompat="@drawable/kings" />
+
+                    <TextView
+                        android:id="@+id/team_name12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Kings"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Knicks -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_knicks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_knicks">
+
+                    <ImageView
+                        android:id="@+id/team_logo13"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Knicks"
+                        app:srcCompat="@drawable/knicks" />
+
+                    <TextView
+                        android:id="@+id/team_name13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Knicks"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Lakers -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_lakers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_lakers">
+
+                    <ImageView
+                        android:id="@+id/team_logo14"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Lakers"
+                        app:srcCompat="@drawable/lakers" />
+
+                    <TextView
+                        android:id="@+id/team_name14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Lakers"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Magic -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_magic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_magic">
+
+                    <ImageView
+                        android:id="@+id/team_logo15"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Magic"
+                        app:srcCompat="@drawable/magic" />
+
+                    <TextView
+                        android:id="@+id/team_name15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Magic"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Mavericks -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_mavericks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_mavericks">
+
+                    <ImageView
+                        android:id="@+id/team_logo16"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Mavericks"
+                        app:srcCompat="@drawable/mavericks" />
+
+                    <TextView
+                        android:id="@+id/team_name16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Mavericks"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Nets -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_nets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_nets">
+
+                    <ImageView
+                        android:id="@+id/team_logo17"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Nets"
+                        app:srcCompat="@drawable/nets" />
+
+                    <TextView
+                        android:id="@+id/team_name17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Nets"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Nuggets -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_nuggets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_nuggets">
+
+                    <ImageView
+                        android:id="@+id/team_logo18"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Nuggets"
+                        app:srcCompat="@drawable/nuggets" />
+
+                    <TextView
+                        android:id="@+id/team_name18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Nuggets"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Pacers -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_pacers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_pacers">
+
+                    <ImageView
+                        android:id="@+id/team_logo19"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Pacers"
+                        app:srcCompat="@drawable/pacers" />
+
+                    <TextView
+                        android:id="@+id/team_name19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Pacers"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Pelicans -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_pelicans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_pelicans">
+
+                    <ImageView
+                        android:id="@+id/team_logo20"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Pelicans"
+                        app:srcCompat="@drawable/pelicans" />
+
+                    <TextView
+                        android:id="@+id/team_name20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Pelicans"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Pistons -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_pistons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_pistons">
+
+                    <ImageView
+                        android:id="@+id/team_logo21"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Pistons"
+                        app:srcCompat="@drawable/pistons" />
+
+                    <TextView
+                        android:id="@+id/team_name21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Pistons"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Raptors -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_raptors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_raptors">
+
+                    <ImageView
+                        android:id="@+id/team_logo22"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Raptors"
+                        app:srcCompat="@drawable/raptors" />
+
+                    <TextView
+                        android:id="@+id/team_name22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Raptors"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Rockets -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_rockets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_rockets">
+
+                    <ImageView
+                        android:id="@+id/team_logo23"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Rockets"
+                        app:srcCompat="@drawable/rockets" />
+
+                    <TextView
+                        android:id="@+id/team_name23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Rockets"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Spurs -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_spurs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_spurs">
+
+                    <ImageView
+                        android:id="@+id/team_logo24"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Spurs"
+                        app:srcCompat="@drawable/spurs" />
+
+                    <TextView
+                        android:id="@+id/team_name24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Spurs"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Suns -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_suns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_suns">
+
+                    <ImageView
+                        android:id="@+id/team_logo25"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Suns"
+                        app:srcCompat="@drawable/suns" />
+
+                    <TextView
+                        android:id="@+id/team_name25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Suns"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Thunder -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_thunder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_thunder">
+
+                    <ImageView
+                        android:id="@+id/team_logo26"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Thunder"
+                        app:srcCompat="@drawable/thunder" />
+
+                    <TextView
+                        android:id="@+id/team_name26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Thunder"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Timberwolves -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_timberwolves"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_timberwolves">
+
+                    <ImageView
+                        android:id="@+id/team_logo27"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Timberwolves"
+                        app:srcCompat="@drawable/timberwolves" />
+
+                    <TextView
+                        android:id="@+id/team_name27"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Timberwolves"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Trail Blazers -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_trail_blazers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_trail_blazers">
+
+                    <ImageView
+                        android:id="@+id/team_logo28"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Trail Blazers"
+                        app:srcCompat="@drawable/trail_blazers" />
+
+                    <TextView
+                        android:id="@+id/team_name28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Trail Blazers"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Warriors -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_warriors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_warriors">
+
+                    <ImageView
+                        android:id="@+id/team_logo29"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Warriors"
+                        app:srcCompat="@drawable/warriors" />
+
+                    <TextView
+                        android:id="@+id/team_name29"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Warriors"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Wizards -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carta_wizards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="@drawable/fade_wizards">
+
+                    <ImageView
+                        android:id="@+id/team_logo30"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Wizards"
+                        app:srcCompat="@drawable/wizards" />
+
+                    <TextView
+                        android:id="@+id/team_name30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:text="Wizards"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
