@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -95,6 +96,7 @@ class JugadoresAdapter(private val jugadores: List<String>, private val equipo: 
         private val playerName: TextView = itemView.findViewById(R.id.player_name)
         private val playerImage: ImageView = itemView.findViewById(R.id.player_image)
         private val placeholderResId = R.drawable.ic_player_placeholder
+        private val playerContainer: LinearLayout = itemView.findViewById(R.id.player_container)
 
         fun bind(jugador: String, equipo: String) {
             playerName.text = jugador
@@ -170,7 +172,14 @@ class JugadoresAdapter(private val jugadores: List<String>, private val equipo: 
             val backgroundResId = itemView.context.resources.getIdentifier("fade_$equipoNombre", "drawable", itemView.context.packageName)
 
             if (backgroundResId != 0) {
-                itemView.background = ContextCompat.getDrawable(itemView.context, backgroundResId)
+                playerContainer.background = ContextCompat.getDrawable(itemView.context, backgroundResId)
+            }
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, Jugador::class.java)
+                intent.putExtra("equipo", equipo)
+                intent.putExtra("jugador", jugador)
+                itemView.context.startActivity(intent)
             }
         }
 

@@ -29,7 +29,7 @@ object DummyData {
         Team("Suns", R.drawable.suns),
         Team("Thunder", R.drawable.thunder),
         Team("Timberwolves", R.drawable.timberwolves),
-        Team("Trail Blazers", R.drawable.trail_blazers),
+        Team("Trail Blazers", R.drawable.blazers),
         Team("Warriors", R.drawable.warriors),
         Team("Wizards", R.drawable.wizards)
     )

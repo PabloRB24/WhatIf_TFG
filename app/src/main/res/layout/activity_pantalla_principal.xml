@@ -982,14 +982,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="16dp"
-                    android:background="@drawable/fade_trail_blazers">
+                    android:background="@drawable/fade_blazers">
 
                     <ImageView
                         android:id="@+id/team_logo28"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:contentDescription="Trail Blazers"
-                        app:srcCompat="@drawable/trail_blazers" />
+                        app:srcCompat="@drawable/blazers" />
 
                     <TextView
                         android:id="@+id/team_name28"
