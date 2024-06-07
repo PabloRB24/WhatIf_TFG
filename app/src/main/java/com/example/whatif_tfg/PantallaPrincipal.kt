@@ -2,6 +2,8 @@ package com.example.whatif_tfg
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 
@@ -37,6 +39,7 @@ class PantallaPrincipal : AppCompatActivity() {
     private lateinit var carta_trail_blazers: CardView
     private lateinit var carta_warriors: CardView
     private lateinit var carta_wizards: CardView
+    private lateinit var botonPelota : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +76,7 @@ class PantallaPrincipal : AppCompatActivity() {
         carta_warriors = findViewById(R.id.carta_warriors)
         carta_wizards = findViewById(R.id.carta_wizards)
 
+        botonPelota = findViewById(R.id.imageButton)
 
         carta_76ers.setOnClickListener { navigateToJugadoresPantalla("Philadelphia 76ers") }
         carta_bucks.setOnClickListener { navigateToJugadoresPantalla("Milwaukee Bucks") }
@@ -105,6 +109,7 @@ class PantallaPrincipal : AppCompatActivity() {
         carta_warriors.setOnClickListener { navigateToJugadoresPantalla("Golden State Warriors") }
         carta_wizards.setOnClickListener { navigateToJugadoresPantalla("Washington Wizards") }
 
+        botonPelota.setOnClickListener { startActivity(Intent(this,TodosLosJugadores::class.java))}
     }
 
 

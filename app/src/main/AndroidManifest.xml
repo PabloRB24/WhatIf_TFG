@@ -13,8 +13,11 @@
         android:theme="@style/Theme.WhatIf_TFG"
         tools:targetApi="31">
         <activity
+            android:name=".TodosLosJugadores"
+            android:exported="false" />
+        <activity
             android:name=".Jugador"
-            android:exported="false"  />
+            android:exported="false" />
         <activity
             android:name=".JugadoresPantalla"
             android:exported="false" />

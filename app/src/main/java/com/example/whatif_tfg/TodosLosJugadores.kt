@@ -1,5 +1,6 @@
 package com.example.whatif_tfg
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -7,7 +8,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -21,18 +21,19 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.google.firebase.database.*
 
-class JugadoresPantalla : AppCompatActivity() {
+class TodosLosJugadores : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var database: FirebaseDatabase
     private lateinit var rootRef: DatabaseReference
     private lateinit var atras: ImageView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_jugadores_pantalla)
+        setContentView(R.layout.activity_todos_los_jugadores)
 
-        recyclerView = findViewById(R.id.recyclerViewJugadores)
+        recyclerView = findViewById(R.id.recyclerViewTodosLosJugadores)
         atras = findViewById(R.id.bntAtrasEquipos)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -40,32 +41,26 @@ class JugadoresPantalla : AppCompatActivity() {
         rootRef = database.reference
 
         atras.setOnClickListener {
-            val intent = Intent(this, PantallaPrincipal::class.java)
-            startActivity(intent)
+            finish() // Cierra la actividad actual y vuelve a la anterior
         }
 
-        val teamName = intent.getStringExtra("equipo")
-        if (teamName != null) {
-            getPlayersFromTeam(teamName) { playerNames ->
-                recyclerView.adapter = JugadoresAdapter(playerNames,teamName)
-            }
-        } else {
-            Log.e("JugadoresPantalla", "No se pasó el nombre del equipo en el Intent")
+        getAllPlayers { players ->
+            recyclerView.adapter = JugadoresAdapterTodos(players)
         }
     }
 
-    private fun getPlayersFromTeam(teamName: String, callback: (List<String>) -> Unit) {
+    private fun getAllPlayers(callback: (List<Pair<String, String>>) -> Unit) {
         rootRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val playerNames = mutableListOf<String>()
+                val players = mutableListOf<Pair<String, String>>()
                 for (snapshot in dataSnapshot.children) {
-                    val team = snapshot.child("team").getValue(String::class.java)
-                    if (team == teamName) {
-                        val playerName = snapshot.child("name").getValue(String::class.java)
-                        playerName?.let { playerNames.add(it) }
+                    val playerName = snapshot.child("name").getValue(String::class.java)
+                    val teamName = snapshot.child("team").getValue(String::class.java)
+                    if (playerName != null && teamName != null) {
+                        players.add(Pair(playerName, teamName))
                     }
                 }
-                callback(playerNames)
+                callback(players)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -76,9 +71,7 @@ class JugadoresPantalla : AppCompatActivity() {
     }
 }
 
-
-
-class JugadoresAdapter(private val jugadores: List<String>, private val equipo: String) : RecyclerView.Adapter<JugadoresAdapter.JugadorViewHolder>() {
+class JugadoresAdapterTodos(private val jugadores: List<Pair<String, String>>) : RecyclerView.Adapter<JugadoresAdapterTodos.JugadorViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JugadorViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_jugador, parent, false)
@@ -86,7 +79,7 @@ class JugadoresAdapter(private val jugadores: List<String>, private val equipo: 
     }
 
     override fun onBindViewHolder(holder: JugadorViewHolder, position: Int) {
-        val jugador = jugadores[position]
+        val (jugador, equipo) = jugadores[position]
         holder.bind(jugador, equipo)
     }
 
@@ -134,7 +127,7 @@ class JugadoresAdapter(private val jugadores: List<String>, private val equipo: 
 
                 loadImageWithFallback(imageUrls)
 
-            } else if (parts.size >= 3){
+            } else if (parts.size >= 3) {
                 var firstName = parts[0]
                 var lastName = parts[1]
                 var extra = parts[2]
@@ -158,9 +151,7 @@ class JugadoresAdapter(private val jugadores: List<String>, private val equipo: 
                     "https://www.2kratings.com/wp-content/uploads/$firstName-$lastName-$extra-2K-Rating-547x400.png",
                     "https://www.2kratings.com/wp-content/uploads/$firstName-$lastName-$extra-2K-Rating-550x400.png",
                     "https://www.2kratings.com/wp-content/uploads/$firstName-$lastName-$extra-2K-Rating-600x400.png",
-                    "https://www.2kratings.com/wp-content/uploads/$firstName-$lastName-$extra-2K-Rating-1-600x400.png",
-                    "https://www.2kratings.com/wp-content/uploads/$firstName-$lastName-$extra-2K-Rating-1-547x400.png",
-                    "https://www.2kratings.com/wp-content/uploads/$firstName-$lastName-$extra-2K-Rating-1-550x400.png"
+                    "https://www.2kratings.com/wp-content/uploads/$firstName-$lastName-$extra-2K-Rating-1-600x400.png"
                 )
 
                 loadImageWithFallback(imageUrls)
@@ -179,8 +170,8 @@ class JugadoresAdapter(private val jugadores: List<String>, private val equipo: 
 
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, Jugador::class.java)
-                intent.putExtra("equipo", equipo)
                 intent.putExtra("jugador", jugador)
+                intent.putExtra("equipo", equipo)
                 itemView.context.startActivity(intent)
             }
         }
