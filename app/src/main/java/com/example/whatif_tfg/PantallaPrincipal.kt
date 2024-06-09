@@ -2,12 +2,18 @@ package com.example.whatif_tfg
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import android.view.MenuItem
+import android.widget.PopupMenu
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 
-class PantallaPrincipal : AppCompatActivity() {
+class PantallaPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var carta_76ers: CardView
     private lateinit var carta_bucks: CardView
@@ -39,11 +45,30 @@ class PantallaPrincipal : AppCompatActivity() {
     private lateinit var carta_trail_blazers: CardView
     private lateinit var carta_warriors: CardView
     private lateinit var carta_wizards: CardView
-    private lateinit var botonPelota : ImageView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pantalla_principal)
+
+        private lateinit var drawerLayout: DrawerLayout
+        private lateinit var navView: NavigationView
+        private lateinit var botonPelota: ImageView
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_pantalla_principal)
+
+            drawerLayout = findViewById(R.id.drawer_layout)
+            navView = findViewById(R.id.nav_view)
+            botonPelota = findViewById(R.id.imageButton)
+
+            val toggle = ActionBarDrawerToggle(
+                this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+            drawerLayout.addDrawerListener(toggle)
+            toggle.syncState()
+
+            navView.setNavigationItemSelectedListener(this)
+
+            botonPelota.setOnClickListener {
+                drawerLayout.openDrawer(navView)
+            }
 
         carta_76ers = findViewById(R.id.carta_76ers)
         carta_bucks = findViewById(R.id.carta_bucks)
@@ -76,7 +101,6 @@ class PantallaPrincipal : AppCompatActivity() {
         carta_warriors = findViewById(R.id.carta_warriors)
         carta_wizards = findViewById(R.id.carta_wizards)
 
-        botonPelota = findViewById(R.id.imageButton)
 
         carta_76ers.setOnClickListener { navigateToJugadoresPantalla("Philadelphia 76ers") }
         carta_bucks.setOnClickListener { navigateToJugadoresPantalla("Milwaukee Bucks") }
@@ -109,8 +133,31 @@ class PantallaPrincipal : AppCompatActivity() {
         carta_warriors.setOnClickListener { navigateToJugadoresPantalla("Golden State Warriors") }
         carta_wizards.setOnClickListener { navigateToJugadoresPantalla("Washington Wizards") }
 
-        botonPelota.setOnClickListener { startActivity(Intent(this,TodosLosJugadores::class.java))}
+
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.todos_equipos -> {
+                val intent = Intent(this, PantallaPrincipal::class.java)
+                intent.putExtra("equipo", "Todos los equipos")
+                startActivity(intent)
+            }
+            R.id.todos_jugadores -> {
+                val intent = Intent(this, TodosLosJugadores::class.java)
+                intent.putExtra("equipo", "Todos los jugadores")
+                startActivity(intent)
+            }
+            R.id.draft -> {
+                val intent = Intent(this, BasketDraft::class.java)
+                intent.putExtra("equipo", "Draft")
+                startActivity(intent)
+            }
+        }
+        drawerLayout.closeDrawer(navView)
+        return true
+    }
+
 
 
     private fun navigateToJugadoresPantalla(teamName: String) {

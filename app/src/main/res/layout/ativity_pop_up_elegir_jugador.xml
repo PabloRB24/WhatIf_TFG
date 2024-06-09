@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:background="#424242"
+    android:layout_marginTop="150dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/player1_image"
+            android:layout_width="match_parent"
+            android:layout_height="259dp"
+            android:layout_weight="1"
+            android:contentDescription="Player 1"
+            app:srcCompat="@drawable/ic_player_placeholder" />
+
+        <TextView
+            android:id="@+id/player1_name"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:gravity="center"
+            android:text="Player 1"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/player2_image"
+            android:layout_width="match_parent"
+            android:layout_height="259dp"
+            android:layout_weight="1"
+            android:contentDescription="Player 2"
+            app:srcCompat="@drawable/ic_player_placeholder" />
+
+        <TextView
+            android:id="@+id/player2_name"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:gravity="center"
+            android:text="Player 2"
+            android:textSize="14sp"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/player3_image"
+            android:layout_width="match_parent"
+            android:layout_height="259dp"
+            android:layout_weight="1"
+            android:contentDescription="Player 3"
+            app:srcCompat="@drawable/ic_player_placeholder" />
+
+        <TextView
+            android:id="@+id/player3_name"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:gravity="center"
+            android:text="Player 3"
+            android:textSize="14sp"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrabajoJesusFinal</string>
+    <string name="app_name">What If (NBA Edition)</string>
     <string name="inicia_sesion">Inicia sesión con tu correo electronico</string>
     <string name="abandonar">ABANDONAR</string>
     <string name="informacion">INFORMACION</string>
@@ -21,6 +21,10 @@
     <string name="mostrar">Mostrar</string>
     <string name="contrase_a3">Contraseña:</string>
     <string name="nombre3">Nombre:</string>
+
+    <string name="apiKeyMaps">AIzaSyC4P0O-CE0l1eVjK8nhh9GinQvNOByKvRU</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string-array name="generos">
         <item name="Romance">Romance</item>

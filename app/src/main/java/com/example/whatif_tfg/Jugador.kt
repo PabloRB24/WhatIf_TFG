@@ -1,18 +1,23 @@
 package com.example.whatif_tfg
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
 
-class Jugador : AppCompatActivity() {
+class Jugador : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
     private lateinit var playerImage: ImageView
     private lateinit var nombre: TextView
@@ -21,7 +26,9 @@ class Jugador : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var rootRef: DatabaseReference
     private lateinit var bntAtrasJugadores: ImageView
-
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var botonPelota: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jugador)
@@ -31,6 +38,10 @@ class Jugador : AppCompatActivity() {
         rating = findViewById(R.id.rating)
         statsGrid = findViewById(R.id.stats_grid)
         bntAtrasJugadores = findViewById(R.id.bntAtrasJugadores)
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav_view)
+        botonPelota = findViewById(R.id.imageButton)
 
         database = FirebaseDatabase.getInstance("https://tfggrado-de607-default-rtdb.europe-west1.firebasedatabase.app")
         rootRef = database.reference
@@ -47,7 +58,42 @@ class Jugador : AppCompatActivity() {
         bntAtrasJugadores.setOnClickListener {
             finish() // Cierra la actividad actual y vuelve a la anterior
         }
+
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        navView.setNavigationItemSelectedListener(this)
+
+        botonPelota.setOnClickListener {
+            drawerLayout.openDrawer(navView)
+        }
+
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.todos_equipos -> {
+                val intent = Intent(this, PantallaPrincipal::class.java)
+                intent.putExtra("equipo", "Todos los equipos")
+                startActivity(intent)
+            }
+            R.id.todos_jugadores -> {
+                val intent = Intent(this, TodosLosJugadores::class.java)
+                intent.putExtra("equipo", "Todos los jugadores")
+                startActivity(intent)
+            }
+            R.id.draft -> {
+                val intent = Intent(this, BasketDraft::class.java)
+                intent.putExtra("equipo", "Draft")
+                startActivity(intent)
+            }
+        }
+        drawerLayout.closeDrawer(navView)
+        return true
+    }
+
 
     private fun loadPlayerDetails(jugador: String) {
         rootRef.orderByChild("name").equalTo(jugador).addListenerForSingleValueEvent(object : ValueEventListener {

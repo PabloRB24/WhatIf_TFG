@@ -5,36 +5,82 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
 
-class JugadoresPantalla : AppCompatActivity() {
+class JugadoresPantalla : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var database: FirebaseDatabase
     private lateinit var rootRef: DatabaseReference
     private lateinit var atras: ImageView
+    private lateinit var mapa: LinearLayout
 
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var botonPelota: ImageView
+
+    val teamCoordinates = mapOf(
+        "Atlanta Hawks" to Pair(33.7573, -84.3963),
+        "Boston Celtics" to Pair(42.3662, -71.0621),
+        "Brooklyn Nets" to Pair(40.6827, -73.9757),
+        "Charlotte Hornets" to Pair(35.2251, -80.8392),
+        "Chicago Bulls" to Pair(41.8807, -87.6742),
+        "Cleveland Cavaliers" to Pair(41.4965, -81.6882),
+        "Dallas Mavericks" to Pair(32.7905, -96.8103),
+        "Denver Nuggets" to Pair(39.7487, -105.0077),
+        "Detroit Pistons" to Pair(42.3410, -83.0551),
+        "Golden State Warriors" to Pair(37.7679, -122.3873),
+        "Houston Rockets" to Pair(29.7508, -95.3621),
+        "Indiana Pacers" to Pair(39.7640, -86.1555),
+        "Los Angeles Clippers" to Pair(34.0430, -118.2673),
+        "Los Angeles Lakers" to Pair(34.0430, -118.2673),
+        "Memphis Grizzlies" to Pair(35.1382, -90.0506),
+        "Miami Heat" to Pair(25.7814, -80.1870),
+        "Milwaukee Bucks" to Pair(43.0451, -87.9172),
+        "Minnesota Timberwolves" to Pair(44.9795, -93.2760),
+        "New Orleans Pelicans" to Pair(29.9490, -90.0815),
+        "New York Knicks" to Pair(40.7505, -73.9934),
+        "Oklahoma City Thunder" to Pair(35.4634, -97.5151),
+        "Orlando Magic" to Pair(28.5392, -81.3839),
+        "Philadelphia 76ers" to Pair(39.9012, -75.1720),
+        "Phoenix Suns" to Pair(33.4458, -112.0712),
+        "Portland Trail Blazers" to Pair(45.5316, -122.6668),
+        "Sacramento Kings" to Pair(38.5803, -121.4991),
+        "San Antonio Spurs" to Pair(29.4270, -98.4375),
+        "Toronto Raptors" to Pair(43.6435, -79.3791),
+        "Utah Jazz" to Pair(40.7683, -111.9011),
+        "Washington Wizards" to Pair(38.8981, -77.0209)
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jugadores_pantalla)
 
         recyclerView = findViewById(R.id.recyclerViewJugadores)
         atras = findViewById(R.id.bntAtrasEquipos)
+        mapa = findViewById(R.id.mapsClic)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav_view)
+        botonPelota = findViewById(R.id.imageButton)
 
         database = FirebaseDatabase.getInstance("https://tfggrado-de607-default-rtdb.europe-west1.firebasedatabase.app")
         rootRef = database.reference
@@ -44,15 +90,71 @@ class JugadoresPantalla : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val teamName = intent.getStringExtra("equipo")
-        if (teamName != null) {
-            getPlayersFromTeam(teamName) { playerNames ->
-                recyclerView.adapter = JugadoresAdapter(playerNames,teamName)
+        val equipo = intent.getStringExtra("equipo")
+        if (equipo != null) {
+            getPlayersFromTeam(equipo) { playerNames ->
+                recyclerView.adapter = JugadoresAdapter(playerNames,equipo)
             }
         } else {
             Log.e("JugadoresPantalla", "No se pasó el nombre del equipo en el Intent")
         }
+
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        navView.setNavigationItemSelectedListener(this)
+
+        botonPelota.setOnClickListener {
+            drawerLayout.openDrawer(navView)
+        }
+
+
+
+        mapa.setOnClickListener {
+            if (equipo != null) {
+                startMapsActivityWithTeamCoordinates(equipo)
+            }
+        }
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.todos_equipos -> {
+                val intent = Intent(this, PantallaPrincipal::class.java)
+                intent.putExtra("equipo", "Todos los equipos")
+                startActivity(intent)
+            }
+            R.id.todos_jugadores -> {
+                val intent = Intent(this, TodosLosJugadores::class.java)
+                intent.putExtra("equipo", "Todos los jugadores")
+                startActivity(intent)
+            }
+            R.id.draft -> {
+                val intent = Intent(this, BasketDraft::class.java)
+                intent.putExtra("equipo", "Draft")
+                startActivity(intent)
+            }
+        }
+        drawerLayout.closeDrawer(navView)
+        return true
+    }
+
+    fun startMapsActivityWithTeamCoordinates(teamName: String) {
+        val coordinates = teamCoordinates[teamName]
+        if (coordinates != null) {
+            val intent = Intent(this, MapsActivity::class.java).apply {
+                putExtra("latitude", coordinates.first)
+                putExtra("longitude", coordinates.second)
+            }
+            startActivity(intent)
+        } else {
+            // Manejar el caso en el que el nombre del equipo no esté en el mapa
+            Toast.makeText(this, "Equipo no encontrado", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     private fun getPlayersFromTeam(teamName: String, callback: (List<String>) -> Unit) {
         rootRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -74,6 +176,8 @@ class JugadoresPantalla : AppCompatActivity() {
             }
         })
     }
+
+
 }
 
 

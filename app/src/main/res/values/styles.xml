@@ -7,4 +7,11 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:gravity">center</item>
     </style>
+
+
+    <style name="NavigationMenuTextStyle" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:titleTextColor">@android:color/white</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
 </resources>

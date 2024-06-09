@@ -6,27 +6,35 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
 
-class TodosLosJugadores : AppCompatActivity() {
+class TodosLosJugadores : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var database: FirebaseDatabase
     private lateinit var rootRef: DatabaseReference
     private lateinit var atras: ImageView
+
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var botonPelota: ImageView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,19 +43,60 @@ class TodosLosJugadores : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerViewTodosLosJugadores)
         atras = findViewById(R.id.bntAtrasEquipos)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav_view)
+        botonPelota = findViewById(R.id.imageButton)
+
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         database = FirebaseDatabase.getInstance("https://tfggrado-de607-default-rtdb.europe-west1.firebasedatabase.app")
         rootRef = database.reference
 
-        atras.setOnClickListener {
-            finish() // Cierra la actividad actual y vuelve a la anterior
-        }
 
         getAllPlayers { players ->
             recyclerView.adapter = JugadoresAdapterTodos(players)
         }
+
+        atras.setOnClickListener {
+            finish() // Cierra la actividad actual y vuelve a la anterior
+        }
+
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        navView.setNavigationItemSelectedListener(this)
+
+        botonPelota.setOnClickListener {
+            drawerLayout.openDrawer(navView)
+        }
+
+
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.todos_equipos -> {
+                val intent = Intent(this, PantallaPrincipal::class.java)
+                intent.putExtra("equipo", "Todos los equipos")
+                startActivity(intent)
+            }
+            R.id.todos_jugadores -> {
+                val intent = Intent(this, TodosLosJugadores::class.java)
+                intent.putExtra("equipo", "Todos los jugadores")
+                startActivity(intent)
+            }
+            R.id.draft -> {
+                val intent = Intent(this, BasketDraft::class.java)
+                intent.putExtra("equipo", "Draft")
+                startActivity(intent)
+            }
+        }
+        drawerLayout.closeDrawer(navView)
+        return true
+    }
+
 
     private fun getAllPlayers(callback: (List<Pair<String, String>>) -> Unit) {
         rootRef.addListenerForSingleValueEvent(object : ValueEventListener {
