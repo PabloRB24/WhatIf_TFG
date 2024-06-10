@@ -1,128 +1,73 @@
 package com.example.whatif_tfg
 
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
+import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
-import kotlin.random.Random
 
-class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
+class BasketDraft : AppCompatActivity() {
 
-    private lateinit var positionImages: List<ImageView>
     private lateinit var database: FirebaseDatabase
     private lateinit var rootRef: DatabaseReference
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navView: NavigationView
-    private lateinit var botonPelota: ImageView
+    private lateinit var positionContainers: List<View>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basket_draft)
 
-        drawerLayout = findViewById(R.id.drawer_layout)
-        navView = findViewById(R.id.nav_view)
-        botonPelota = findViewById(R.id.imageButton)
-
-        positionImages = listOf(
-            findViewById(R.id.position1_image),
-            findViewById(R.id.position2_image),
-            findViewById(R.id.position3_image),
-            findViewById(R.id.position4_image),
-            findViewById(R.id.position5_image)
+        positionContainers = listOf(
+            findViewById(R.id.position1_container),
+            findViewById(R.id.position2_container),
+            findViewById(R.id.position3_container),
+            findViewById(R.id.position4_container),
+            findViewById(R.id.position5_container)
         )
 
         database = FirebaseDatabase.getInstance("https://tfggrado-de607-default-rtdb.europe-west1.firebasedatabase.app")
         rootRef = database.reference
 
-        positionImages.forEachIndexed { index, imageView ->
-            imageView.setOnClickListener {
+        positionContainers.forEachIndexed { index, container ->
+            container.setOnClickListener {
                 showPlayerSelectionDialog(index)
             }
         }
-
-        val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        navView.setNavigationItemSelectedListener(this)
-
-        botonPelota.setOnClickListener {
-            drawerLayout.openDrawer(navView)
-        }
     }
-
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.todos_equipos -> {
-                val intent = Intent(this, PantallaPrincipal::class.java)
-                intent.putExtra("equipo", "Todos los equipos")
-                startActivity(intent)
-            }
-            R.id.todos_jugadores -> {
-                val intent = Intent(this, TodosLosJugadores::class.java)
-                intent.putExtra("equipo", "Todos los jugadores")
-                startActivity(intent)
-            }
-            R.id.draft -> {
-                val intent = Intent(this, BasketDraft::class.java)
-                intent.putExtra("equipo", "Draft")
-                startActivity(intent)
-            }
-        }
-        drawerLayout.closeDrawer(navView)
-        return true
-    }
-
 
     private fun showPlayerSelectionDialog(positionIndex: Int) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.ativity_pop_up_elegir_jugador, null)
 
-        val player1Image = dialogView.findViewById<ImageView>(R.id.player1_image)
-        val player1Name = dialogView.findViewById<TextView>(R.id.player1_name)
-        val player2Image = dialogView.findViewById<ImageView>(R.id.player2_image)
-        val player2Name = dialogView.findViewById<TextView>(R.id.player2_name)
-        val player3Image = dialogView.findViewById<ImageView>(R.id.player3_image)
-        val player3Name = dialogView.findViewById<TextView>(R.id.player3_name)
+        val player1Container = dialogView.findViewById<View>(R.id.player1_container)
+        val player2Container = dialogView.findViewById<View>(R.id.player2_container)
+        val player3Container = dialogView.findViewById<View>(R.id.player3_container)
 
         getRandomPlayers { players ->
-            player1Name.text = players[0].first
-            loadImage(players[0].first, players[0].second, player1Image)
-
-            player2Name.text = players[1].first
-            loadImage(players[1].first, players[1].second, player2Image)
-
-            player3Name.text = players[2].first
-            loadImage(players[2].first, players[2].second, player3Image)
+            setPlayerDetails(player1Container, players[0])
+            setPlayerDetails(player2Container, players[1])
+            setPlayerDetails(player3Container, players[2])
 
             val dialog = AlertDialog.Builder(this)
                 .setView(dialogView)
                 .setCancelable(true)
                 .create()
 
-            player1Image.setOnClickListener {
+            player1Container.setOnClickListener {
                 updateSelectedPlayer(positionIndex, players[0])
                 dialog.dismiss()
             }
-            player2Image.setOnClickListener {
+            player2Container.setOnClickListener {
                 updateSelectedPlayer(positionIndex, players[1])
                 dialog.dismiss()
             }
-            player3Image.setOnClickListener {
+            player3Container.setOnClickListener {
                 updateSelectedPlayer(positionIndex, players[2])
                 dialog.dismiss()
             }
@@ -151,11 +96,93 @@ class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelected
             }
         })
     }
+    private fun setPlayerDetails(container: View, player: Pair<String, String>) {
+        val playerImage = container.findViewById<ImageView>(R.id.player_image)
+        val teamImage = container.findViewById<ImageView>(R.id.team_image) // Añadido
+        val playerName = container.findViewById<TextView>(R.id.nombre)
+        val rating = container.findViewById<TextView>(R.id.rating)
+        val statsGrid = container.findViewById<GridLayout>(R.id.stats_grid)
 
-    private fun loadImage(firstName: String, lastName: String, imageView: ImageView) {
-        val parts = firstName.split(" ")
+        playerName.text = player.first
+        loadPlayerStats(player.first) { stats, team ->
+            statsGrid.findViewById<TextView>(R.id.estadistica1).text = "SPD ${stats.speed}"
+            statsGrid.findViewById<TextView>(R.id.estadistica2).text = "BLH ${stats.ballHandling}"
+            statsGrid.findViewById<TextView>(R.id.estadistica3).text = "PAS ${stats.passing}"
+            statsGrid.findViewById<TextView>(R.id.estadistica4).text = "DEF ${stats.defense}"
+            statsGrid.findViewById<TextView>(R.id.estadistica5).text = "SHO ${stats.shooting}"
+            statsGrid.findViewById<TextView>(R.id.estadistica6).text = "PHY ${stats.physical}"
+            rating.text = stats.rating.toString()
+            loadTeamImage(team, teamImage) // Cargar la imagen del equipo
+        }
+        loadImage(player.first, player.second, playerImage)
+    }
+
+    private fun loadPlayerStats(playerName: String, callback: (PlayerStats, String) -> Unit) {
+        rootRef.orderByChild("name").equalTo(playerName).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (snapshot in dataSnapshot.children) {
+                    val speed = snapshot.child("speed").getValue(Int::class.java) ?: 0
+                    val ballHandling = snapshot.child("ballHandle").getValue(Int::class.java) ?: 0
+                    val passAccuracy = snapshot.child("passAccuracy").getValue(Int::class.java) ?: 0
+                    val passIQ = snapshot.child("passIQ").getValue(Int::class.java) ?: 0
+                    val passPerception = snapshot.child("passPerception").getValue(Int::class.java) ?: 0
+                    val passVision = snapshot.child("passVision").getValue(Int::class.java) ?: 0
+                    val freeThrow = snapshot.child("freeThrow").getValue(Int::class.java) ?: 0
+                    val layup = snapshot.child("layup").getValue(Int::class.java) ?: 0
+                    val midRangeShot = snapshot.child("midRangeShot").getValue(Int::class.java) ?: 0
+                    val closeShot = snapshot.child("closeShot").getValue(Int::class.java) ?: 0
+                    val shotIQ = snapshot.child("shotIQ").getValue(Int::class.java) ?: 0
+                    val threePointShot = snapshot.child("threePointShot").getValue(Int::class.java) ?: 0
+                    val defensiveConsistency = snapshot.child("defensiveConsistency").getValue(Int::class.java) ?: 0
+                    val strength = snapshot.child("strength").getValue(Int::class.java) ?: 0
+                    val stamina = snapshot.child("stamina").getValue(Int::class.java) ?: 0
+                    val rating = snapshot.child("overallAttribute").getValue(Int::class.java) ?: 0
+                    val team = snapshot.child("team").getValue(String::class.java) ?: ""
+
+                    val passing = (passAccuracy + passIQ + passPerception + passVision) / 4
+                    val shooting = (freeThrow + layup + midRangeShot + closeShot + shotIQ + threePointShot) / 6
+                    val physical = (strength + stamina) / 2
+
+                    val stats = PlayerStats(speed, ballHandling, passing, defensiveConsistency, shooting, physical, rating)
+                    callback(stats, team)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+    private fun loadTeamImage(equipo: String, imageView: ImageView) {
+        val equipoParts = equipo.split(" ")
+        val lastWord = equipoParts.last().lowercase()
+
+        // Obtener el identificador de la imagen del equipo desde el drawable
+        val resourceId = resources.getIdentifier(lastWord, "drawable", packageName)
+
+        if (resourceId != 0) {
+            imageView.setImageResource(resourceId)
+        } else {
+            imageView.setImageResource(R.drawable.ic_player_placeholder)
+        }
+    }
+
+    private data class PlayerStats(
+        val speed: Int,
+        val ballHandling: Int,
+        val passing: Int,
+        val defense: Int,
+        val shooting: Int,
+        val physical: Int,
+        val rating: Int
+    )
+
+
+    private fun loadImage(playerName: String, teamName: String, imageView: ImageView) {
+        val parts = playerName.split(" ")
         val first = parts[0].replace("’", "").replace(".", "")
-        val last = parts[1].replace("’", "").replace(".", "")
+        val last = if (parts.size > 1) parts[1].replace("’", "").replace(".", "") else ""
 
         val imageUrls = listOf(
             "https://www.2kratings.com/wp-content/uploads/$first-$last-2K-Rating-547x400.png",
@@ -189,9 +216,7 @@ class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     }
 
     private fun updateSelectedPlayer(positionIndex: Int, player: Pair<String, String>) {
-        val selectedImageView = positionImages[positionIndex]
-        loadImage(player.first, player.second, selectedImageView)
-        val playerNameTextView = selectedImageView.rootView.findViewById<TextView>(selectedImageView.id + 1)
-        playerNameTextView.text = player.first
+        val selectedContainer = positionContainers[positionIndex]
+        setPlayerDetails(selectedContainer, player)
     }
 }
