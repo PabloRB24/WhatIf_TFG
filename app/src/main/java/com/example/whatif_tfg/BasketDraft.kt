@@ -231,11 +231,15 @@ class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         val equipoParts = equipo.split(" ")
         val lastWord = equipoParts.last().lowercase()
 
-        // Obtener el identificador de la imagen del equipo desde el drawable
-        val resourceId = resources.getIdentifier(lastWord, "drawable", packageName)
+        val teamImageResource = if (lastWord == "76ers") {
+            R.drawable.foto_76ers
+        } else {
+            resources.getIdentifier(lastWord, "drawable", packageName)
+        }
 
-        if (resourceId != 0) {
-            imageView.setImageResource(resourceId)
+
+        if (teamImageResource != 0) {
+            imageView.setImageResource(teamImageResource)
         } else {
             imageView.setImageResource(R.drawable.ic_player_placeholder)
         }
