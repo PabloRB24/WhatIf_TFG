@@ -14,12 +14,13 @@
         android:background="#424242">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar2"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="93dp"
             android:background="#212121"
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -29,28 +30,32 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="left"
+                android:visibility="visible"
+                android:layout_marginEnd="20dp"
                 android:clickable="true"
-                android:focusable="true"
-                tools:srcCompat="@drawable/atras10"/>
+                android:contentDescription="menu"
+                app:srcCompat="@drawable/atras5" />
 
             <TextView
                 android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Estadio"
+                android:text="Mapa"
                 android:textColor="@android:color/white"
                 android:textSize="30sp"
                 android:textStyle="bold" />
+
 
             <ImageView
                 android:id="@+id/imageButton"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="right"
-                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:clickable="true"
+                android:contentDescription="menu"
                 app:srcCompat="@drawable/pelota3" />
-
         </androidx.appcompat.widget.Toolbar>
 
         <fragment
@@ -58,10 +63,10 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="638dp"
-            android:layout_below="@id/toolbar2"
+            android:layout_below="@id/toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
