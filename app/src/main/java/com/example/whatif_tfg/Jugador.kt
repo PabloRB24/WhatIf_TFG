@@ -136,14 +136,18 @@ class Jugador : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
                     val equipoParts = equipo.split(" ")
                     val lastWord = equipoParts.last().lowercase()
 
-                    // Obtener el identificador de la imagen del equipo desde el drawable
-                    val resourceId = resources.getIdentifier(lastWord, "drawable", packageName)
+                    val teamImageResource = if (lastWord == "76ers") {
+                        R.drawable.foto_76ers
+                    } else {
+                        resources.getIdentifier(lastWord, "drawable", packageName)
+                    }
 
-                    if (resourceId != 0) {
-                        findViewById<ImageView>(R.id.team_image).setImageResource(resourceId)
+                    if (teamImageResource != 0) {
+                        findViewById<ImageView>(R.id.team_image).setImageResource(teamImageResource)
                     } else {
                         findViewById<ImageView>(R.id.team_image).setImageResource(R.drawable.ic_player_placeholder)
                     }
+
 
 
                     val parts = jugador.split(" ")

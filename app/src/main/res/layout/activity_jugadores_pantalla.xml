@@ -79,7 +79,7 @@
                 android:layout_gravity="left"
                 android:clickable="true"
                 android:focusable="true"
-                tools:srcCompat="@drawable/atras3" />
+                tools:srcCompat="@drawable/atras10" />
 
             <TextView
                 android:id="@+id/toolbar_title"
@@ -97,7 +97,7 @@
                 android:layout_height="60dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"
-                app:srcCompat="@drawable/pelota" />
+                app:srcCompat="@drawable/pelota3" />
 
         </androidx.appcompat.widget.Toolbar>
 

@@ -37,7 +37,7 @@
             android:layout_height="60dp"
             android:layout_gravity="right"
             android:layout_marginEnd="20dp"
-            app:srcCompat="@drawable/pelota"
+            app:srcCompat="@drawable/pelota3"
             android:clickable="true"/>
 
     </androidx.appcompat.widget.Toolbar>

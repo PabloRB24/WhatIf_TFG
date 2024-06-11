@@ -22,13 +22,10 @@ class CrearCuenta : AppCompatActivity() {
     private lateinit var database : FirebaseDatabase
     private lateinit var usuariosRef : DatabaseReference
 
-    private lateinit var imagen : ImageView
     private lateinit var correo : EditText
     private lateinit var nombre : EditText
     private lateinit var contra : EditText
     private lateinit var continua : Button
-    private lateinit var derecha : ImageView
-    private lateinit var izquierda : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,64 +35,10 @@ class CrearCuenta : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
         usuariosRef = database.getReference("usuarios")
 
-        imagen = findViewById(R.id.imageSelector)
         correo = findViewById(R.id.mail)
         nombre = findViewById(R.id.usuario)
         contra = findViewById(R.id.contra)
         continua = findViewById(R.id.continuarInicio)
-        derecha = findViewById(R.id.imageView3)
-        izquierda = findViewById(R.id.imageView2)
-        var nombreImg = ""
-
-        derecha.setOnClickListener{
-            if (cont >= 4){
-                cont = 1
-            }else{
-                cont++
-            }
-
-            when(cont){
-
-                1->{
-
-                }
-                2->{
-
-                }
-                3->{
-
-                }
-                4->{
-
-                }
-            }
-        }
-
-        izquierda.setOnClickListener{
-            if (cont <= 1){
-                cont = 4
-            }else{
-                cont--
-            }
-
-            when(cont){
-
-                1->{
-
-                }
-                2->{
-
-                }
-                3->{
-
-                }
-                4->{
-
-                }
-            }
-        }
-
-
 
 
         continua.setOnClickListener {
@@ -113,7 +56,7 @@ class CrearCuenta : AppCompatActivity() {
                     contra.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        datosUsuario(correo.text.toString(),nombre.text.toString(), nombreImg, contra.text.toString())
+                        datosUsuario(correo.text.toString(),nombre.text.toString(), contra.text.toString())
                         val registrado = Intent(this, MainActivity::class.java)
                         startActivity(registrado)
                     } else {
@@ -141,10 +84,10 @@ class CrearCuenta : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun datosUsuario (correo: String, nombre: String, foto: String, contra: String){
+    private fun datosUsuario (correo: String, nombre: String, contra: String){
         val usuarioActual : FirebaseUser? = auth.currentUser
         if (usuarioActual !=null) {
-            val user = Usuario (correo, nombre, foto, contra)
+            val user = Usuario (correo, nombre, contra)
             usuariosRef.child(usuarioActual.uid).setValue(user)
         } else {
 

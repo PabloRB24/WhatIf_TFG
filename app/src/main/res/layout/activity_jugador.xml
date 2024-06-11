@@ -32,12 +32,11 @@
             android:layout_marginTop="16dp"
             android:clickable="true"
             android:contentDescription="atras"
-            android:focusable="true"
             app:layout_constraintEnd_toEndOf="@+id/toolbar"
             app:layout_constraintHorizontal_bias="0.067"
             app:layout_constraintStart_toStartOf="@+id/toolbar"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/atras3" />
+            tools:srcCompat="@drawable/atras10" />
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -65,7 +64,7 @@
             app:layout_constraintHorizontal_bias="0.953"
             app:layout_constraintStart_toStartOf="@+id/toolbar"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pelota"
+            app:srcCompat="@drawable/pelota3"
             tools:ignore="MissingConstraints" />
 
         <androidx.cardview.widget.CardView

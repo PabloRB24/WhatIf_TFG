@@ -9,7 +9,7 @@
     <string name="continuar">CONTINUAR</string>
     <string name="contrase_a">Contraseña</string>
     <string name="correo_electronico">Correo electronico</string>
-    <string name="primera_vez_en_disney">¿Primera vez en disney+?</string>
+    <string name="primera_vez">¿Primera vez por aquí?</string>
     <string name="crear_cuenta">CREAR CUENTA</string>
     <string name="crear_cuenta2">Crear cuenta</string>
     <string name="correo_electronico2">Correo electronico</string>
@@ -72,4 +72,6 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+
+
 </resources>

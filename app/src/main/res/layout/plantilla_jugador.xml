@@ -6,7 +6,7 @@
     android:layout_height="300dp"
     android:layout_margin="14dp"
     android:padding="8dp"
-    android:background="#BDBDBD">
+    android:background="@drawable/fondo5">
 
     <ImageView
         android:id="@+id/player_image"
@@ -41,6 +41,7 @@
         android:textColor="@android:color/black"
         android:textSize="14sp"
         android:textStyle="bold"
+        android:background="@drawable/textview_borde"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +57,7 @@
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:background="@drawable/textview_borde"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +71,7 @@
         android:layout_marginTop="5dp"
         android:columnCount="2"
         android:rowCount="3"
+        android:background="@drawable/grid_borde"
         app:layout_constraintTop_toBottomOf="@id/nombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -81,6 +84,7 @@
             android:layout_columnWeight="1"
             android:gravity="center"
             android:textSize="12sp"
+            android:background="@drawable/texto_grid_borde"
             android:textColor="@android:color/black"
             />
 
@@ -92,6 +96,7 @@
             android:layout_columnWeight="1"
             android:gravity="center"
             android:textSize="12sp"
+            android:background="@drawable/texto_grid_borde"
             android:textColor="@android:color/black"
             />
 
@@ -103,6 +108,7 @@
             android:layout_columnWeight="1"
             android:gravity="center"
             android:textSize="12sp"
+            android:background="@drawable/texto_grid_borde"
             android:textColor="@android:color/black"
             />
 
@@ -114,6 +120,7 @@
             android:layout_columnWeight="1"
             android:gravity="center"
             android:textSize="12sp"
+            android:background="@drawable/texto_grid_borde"
             android:textColor="@android:color/black"
             />
 
@@ -125,6 +132,7 @@
             android:layout_columnWeight="1"
             android:gravity="center"
             android:textSize="12sp"
+            android:background="@drawable/texto_grid_borde"
             android:textColor="@android:color/black"
             />
 
@@ -136,6 +144,7 @@
             android:layout_columnWeight="1"
             android:gravity="center"
             android:textSize="12sp"
+            android:background="@drawable/texto_grid_borde"
             android:textColor="@android:color/black"
             />
 

@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        crearCuenta = findViewById(R.id.crearCuenta)
         auth = Firebase.auth
 
         // Evento personalizado para Google Analytics
