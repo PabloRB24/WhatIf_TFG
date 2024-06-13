@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         crearCuenta = findViewById(R.id.crearCuenta)
         auth = Firebase.auth
 
-        // Evento personalizado para Google Analytics
         val analytics : FirebaseAnalytics = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
         bundle.putString("message","Integración de mensaje completa")

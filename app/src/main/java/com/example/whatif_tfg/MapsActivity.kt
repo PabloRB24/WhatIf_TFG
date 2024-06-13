@@ -28,7 +28,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -80,11 +79,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Get the coordinates from the intent
         val latitude = intent.getDoubleExtra("latitude", 0.0)
         val longitude = intent.getDoubleExtra("longitude", 0.0)
 
-        // Add a marker at the coordinates and move the camera
         val location = LatLng(latitude, longitude)
         mMap.addMarker(MarkerOptions().position(location).title("Marker in Location"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))

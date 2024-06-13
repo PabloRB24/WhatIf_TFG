@@ -56,7 +56,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- 76ers -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_76ers"
                 android:layout_width="match_parent"
@@ -90,7 +89,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Bucks -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_bucks"
                 android:layout_width="match_parent"
@@ -124,7 +122,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Bulls -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_bulls"
                 android:layout_width="match_parent"
@@ -158,7 +155,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Cavaliers -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_cavaliers"
                 android:layout_width="match_parent"
@@ -192,7 +188,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Celtics -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_celtics"
                 android:layout_width="match_parent"
@@ -226,7 +221,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Clippers -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_clippers"
                 android:layout_width="match_parent"
@@ -260,7 +254,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Grizzlies -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_grizzlies"
                 android:layout_width="match_parent"
@@ -294,7 +287,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Hawks -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_hawks"
                 android:layout_width="match_parent"
@@ -329,7 +321,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Heat -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_heat"
                 android:layout_width="match_parent"
@@ -363,7 +354,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Hornets -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_hornets"
                 android:layout_width="match_parent"
@@ -397,7 +387,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Jazz -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_jazz"
                 android:layout_width="match_parent"
@@ -431,7 +420,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Kings -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_kings"
                 android:layout_width="match_parent"
@@ -465,7 +453,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Knicks -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_knicks"
                 android:layout_width="match_parent"
@@ -499,7 +486,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Lakers -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_lakers"
                 android:layout_width="match_parent"
@@ -533,7 +519,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Magic -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_magic"
                 android:layout_width="match_parent"
@@ -567,7 +552,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Mavericks -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_mavericks"
                 android:layout_width="match_parent"
@@ -601,7 +585,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Nets -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_nets"
                 android:layout_width="match_parent"
@@ -635,7 +618,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Nuggets -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_nuggets"
                 android:layout_width="match_parent"
@@ -669,7 +651,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Pacers -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_pacers"
                 android:layout_width="match_parent"
@@ -703,7 +684,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Pelicans -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_pelicans"
                 android:layout_width="match_parent"
@@ -737,7 +717,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Pistons -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_pistons"
                 android:layout_width="match_parent"
@@ -771,7 +750,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Raptors -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_raptors"
                 android:layout_width="match_parent"
@@ -805,7 +783,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Rockets -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_rockets"
                 android:layout_width="match_parent"
@@ -839,7 +816,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Spurs -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_spurs"
                 android:layout_width="match_parent"
@@ -873,7 +849,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Suns -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_suns"
                 android:layout_width="match_parent"
@@ -907,7 +882,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Thunder -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_thunder"
                 android:layout_width="match_parent"
@@ -941,7 +915,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Timberwolves -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_timberwolves"
                 android:layout_width="match_parent"
@@ -975,7 +948,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Trail Blazers -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_trail_blazers"
                 android:layout_width="match_parent"
@@ -1009,7 +981,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Warriors -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_warriors"
                 android:layout_width="match_parent"
@@ -1043,7 +1014,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Wizards -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/carta_wizards"
                 android:layout_width="match_parent"

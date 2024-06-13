@@ -30,10 +30,8 @@ class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     private lateinit var navView: NavigationView
     private lateinit var botonPelota: ImageView
 
-    // Mapa para mantener un registro de los jugadores asignados
     private val assignedPlayers = mutableMapOf<Int, PlayerAssignment>()
 
-    // Referencias a los nuevos elementos
     private lateinit var teamAvgText: TextView
     private lateinit var teamProgressBar: ProgressBar
 
@@ -102,14 +100,12 @@ class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelected
     }
     private fun showPlayerSelectionDialog(positionIndex: Int) {
         if (assignedPlayers.containsKey(positionIndex)) {
-            // Si ya hay un jugador asignado a esta posición, redirige a la actividad del jugador
             val player = assignedPlayers[positionIndex]
             val intent = Intent(this, Jugador::class.java)
             intent.putExtra("jugador", player?.playerName)
             intent.putExtra("equipo", player?.teamName)
             startActivity(intent)
         } else {
-            // Mostrar el diálogo de selección de jugador
             val dialogView = LayoutInflater.from(this).inflate(R.layout.ativity_pop_up_elegir_jugador, null)
 
             val player1Container = dialogView.findViewById<View>(R.id.player1_container)
@@ -126,7 +122,6 @@ class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                     .setCancelable(true)
                     .create()
 
-                // Aplicar la animación al contenedor del diálogo
                 dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
 
                 player1Container.setOnClickListener {
@@ -164,7 +159,6 @@ class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelected
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Manejar error
             }
         })
     }
@@ -185,7 +179,7 @@ class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelected
             statsGrid.findViewById<TextView>(R.id.estadistica5).text = "SHO ${stats.shooting}"
             statsGrid.findViewById<TextView>(R.id.estadistica6).text = "PHY ${stats.physical}"
             rating.text = stats.rating.toString()
-            loadTeamImage(team, teamImage) // Cargar la imagen del equipo
+            loadTeamImage(team, teamImage)
         }
         loadImage(player.first, playerImage)
     }
@@ -222,7 +216,6 @@ class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelected
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Handle error
             }
         })
     }
@@ -373,7 +366,7 @@ class BasketDraft : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         val totalRatings = assignedPlayers.values.sumOf { it.rating }
         val avgRating = if (assignedPlayers.isNotEmpty()) totalRatings / assignedPlayers.size else 0
 
-        teamAvgText.text = "Team Average: $avgRating"
+        teamAvgText.text = "Media del equipo: $avgRating"
 
         val quimica = calculateQuimica()
         teamProgressBar.progress = quimica

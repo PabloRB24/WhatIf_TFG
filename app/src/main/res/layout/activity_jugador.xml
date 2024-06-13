@@ -128,7 +128,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Player Name" />
+                    tools:text="Nombre" />
 
                 <TextView
                     android:id="@+id/rating"
@@ -156,7 +156,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
 
-                    <!-- Stat 1 -->
                     <TextView
                         android:id="@+id/estadistica1"
                         android:layout_width="0dp"
@@ -167,7 +166,6 @@
                         android:textColor="@android:color/white"
                         tools:text="PAC 88" />
 
-                    <!-- Stat 2 -->
                     <TextView
                         android:id="@+id/estadistica2"
                         android:layout_width="0dp"
@@ -178,7 +176,6 @@
                         android:textColor="@android:color/white"
                         tools:text="SHO 80" />
 
-                    <!-- Stat 3 -->
                     <TextView
                         android:id="@+id/estadistica3"
                         android:layout_width="0dp"
@@ -189,7 +186,6 @@
                         android:textColor="@android:color/white"
                         tools:text="PAS 75" />
 
-                    <!-- Stat 4 -->
                     <TextView
                         android:id="@+id/estadistica4"
                         android:layout_width="0dp"
@@ -200,7 +196,6 @@
                         android:textColor="@android:color/white"
                         tools:text="DRI 82" />
 
-                    <!-- Stat 5 -->
                     <TextView
                         android:id="@+id/estadistica5"
                         android:layout_width="0dp"
@@ -211,7 +206,6 @@
                         android:textColor="@android:color/white"
                         tools:text="DEF 77" />
 
-                    <!-- Stat 6 -->
                     <TextView
                         android:id="@+id/estadistica6"
                         android:layout_width="0dp"

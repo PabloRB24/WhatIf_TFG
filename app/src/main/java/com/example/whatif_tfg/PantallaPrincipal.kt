@@ -47,28 +47,27 @@ class PantallaPrincipal : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private lateinit var carta_wizards: CardView
 
 
-        private lateinit var drawerLayout: DrawerLayout
-        private lateinit var navView: NavigationView
-        private lateinit var botonPelota: ImageView
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var botonPelota: ImageView
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_pantalla_principal)
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_pantalla_principal)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav_view)
+        botonPelota = findViewById(R.id.imageButton)
 
-            drawerLayout = findViewById(R.id.drawer_layout)
-            navView = findViewById(R.id.nav_view)
-            botonPelota = findViewById(R.id.imageButton)
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
-            val toggle = ActionBarDrawerToggle(
-                this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-            drawerLayout.addDrawerListener(toggle)
-            toggle.syncState()
+        navView.setNavigationItemSelectedListener(this)
 
-            navView.setNavigationItemSelectedListener(this)
-
-            botonPelota.setOnClickListener {
-                drawerLayout.openDrawer(navView)
-            }
+        botonPelota.setOnClickListener {
+            drawerLayout.openDrawer(navView)
+        }
 
         carta_76ers = findViewById(R.id.carta_76ers)
         carta_bucks = findViewById(R.id.carta_bucks)

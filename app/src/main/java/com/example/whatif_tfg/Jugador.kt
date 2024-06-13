@@ -56,7 +56,7 @@ class Jugador : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
         }
 
         bntAtrasJugadores.setOnClickListener {
-            finish() // Cierra la actividad actual y vuelve a la anterior
+            finish()
         }
 
         val toggle = ActionBarDrawerToggle(
@@ -217,14 +217,12 @@ class Jugador : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Manejar error
             }
         })
     }
 
     private fun loadImageWithFallback(urls: List<String>, index: Int = 0) {
         if (index >= urls.size) {
-            // Si todas las URLs fallan, establecer la imagen de error
             playerImage.setImageResource(R.drawable.ic_player_placeholder)
             return
         }
@@ -242,12 +240,10 @@ class Jugador : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
                 }
 
                 override fun onLoadFailed(errorDrawable: Drawable?) {
-                    // Si la carga falla, intentar con la siguiente URL
                     loadImageWithFallback(urls, index + 1)
                 }
 
                 override fun onLoadCleared(placeholder: Drawable?) {
-                    // Método requerido, pero no necesitamos hacer nada aquí
                 }
             })
     }

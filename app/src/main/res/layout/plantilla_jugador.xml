@@ -76,7 +76,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Stat 1 -->
         <TextView
             android:id="@+id/estadistica1"
             android:layout_width="0dp"
@@ -88,7 +87,6 @@
             android:textColor="@android:color/black"
             />
 
-        <!-- Stat 2 -->
         <TextView
             android:id="@+id/estadistica2"
             android:layout_width="0dp"
@@ -100,7 +98,6 @@
             android:textColor="@android:color/black"
             />
 
-        <!-- Stat 3 -->
         <TextView
             android:id="@+id/estadistica3"
             android:layout_width="0dp"
@@ -112,7 +109,6 @@
             android:textColor="@android:color/black"
             />
 
-        <!-- Stat 4 -->
         <TextView
             android:id="@+id/estadistica4"
             android:layout_width="0dp"
@@ -124,7 +120,6 @@
             android:textColor="@android:color/black"
             />
 
-        <!-- Stat 5 -->
         <TextView
             android:id="@+id/estadistica5"
             android:layout_width="0dp"
@@ -136,7 +131,6 @@
             android:textColor="@android:color/black"
             />
 
-        <!-- Stat 6 -->
         <TextView
             android:id="@+id/estadistica6"
             android:layout_width="0dp"

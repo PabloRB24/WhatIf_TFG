@@ -17,12 +17,10 @@ class SplashActivity : AppCompatActivity() {
         val fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.animacion_inicio)
         logoImageView.startAnimation(fadeInAnimation)
 
-        // Esperar a que la animación termine y luego iniciar la actividad principal
         fadeInAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {}
 
             override fun onAnimationEnd(animation: Animation) {
-                // Iniciar la actividad principal
                 val intent = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()

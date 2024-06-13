@@ -150,7 +150,6 @@ class JugadoresPantalla : AppCompatActivity(), NavigationView.OnNavigationItemSe
             }
             startActivity(intent)
         } else {
-            // Manejar el caso en el que el nombre del equipo no esté en el mapa
             Toast.makeText(this, "Equipo no encontrado", Toast.LENGTH_SHORT).show()
         }
     }
@@ -272,7 +271,6 @@ class JugadoresAdapter(private val jugadores: List<String>, private val equipo: 
                 playerImage.setImageResource(placeholderResId)
             }
 
-            // Aplicar el fondo correspondiente al equipo
             val equipoParts = equipo.split(" ")
             val equipoNombre = equipoParts.last().lowercase()
             val backgroundResId = itemView.context.resources.getIdentifier("fade_$equipoNombre", "drawable", itemView.context.packageName)
@@ -291,7 +289,6 @@ class JugadoresAdapter(private val jugadores: List<String>, private val equipo: 
 
         private fun loadImageWithFallback(urls: List<String>, index: Int = 0) {
             if (index >= urls.size) {
-                // Si todas las URLs fallan, establecer la imagen de error
                 playerImage.setImageResource(placeholderResId)
                 return
             }
@@ -309,12 +306,10 @@ class JugadoresAdapter(private val jugadores: List<String>, private val equipo: 
                     }
 
                     override fun onLoadFailed(errorDrawable: Drawable?) {
-                        // Si la carga falla, intentar con la siguiente URL
                         loadImageWithFallback(urls, index + 1)
                     }
 
                     override fun onLoadCleared(placeholder: Drawable?) {
-                        // Método requerido, pero no necesitamos hacer nada aquí
                     }
                 })
         }

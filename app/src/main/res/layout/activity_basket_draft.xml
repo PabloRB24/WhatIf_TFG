@@ -57,7 +57,6 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <!-- Media del equipo y ProgressBar -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

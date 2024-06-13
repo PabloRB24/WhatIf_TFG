@@ -58,7 +58,7 @@ class TodosLosJugadores : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
 
         atras.setOnClickListener {
-            finish() // Cierra la actividad actual y vuelve a la anterior
+            finish()
         }
 
         val toggle = ActionBarDrawerToggle(
@@ -227,7 +227,6 @@ class JugadoresAdapterTodos(private val jugadores: List<Pair<String, String>>) :
 
         private fun loadImageWithFallback(urls: List<String>, index: Int = 0) {
             if (index >= urls.size) {
-                // Si todas las URLs fallan, establecer la imagen de error
                 playerImage.setImageResource(placeholderResId)
                 return
             }
@@ -245,12 +244,10 @@ class JugadoresAdapterTodos(private val jugadores: List<Pair<String, String>>) :
                     }
 
                     override fun onLoadFailed(errorDrawable: Drawable?) {
-                        // Si la carga falla, intentar con la siguiente URL
                         loadImageWithFallback(urls, index + 1)
                     }
 
                     override fun onLoadCleared(placeholder: Drawable?) {
-                        // Método requerido, pero no necesitamos hacer nada aquí
                     }
                 })
         }
